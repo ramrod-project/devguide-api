@@ -1,7 +1,12 @@
 # devguide-api
 
-** This interactive guide leverages an Alpine Linux container running Jupyter Notebook. It's purpose is to support the Plugin developer in building a PCP compliant Plugin. Aside from guiding the Plugin developer, this Plugin template (Using Jupyter Notebook)  also serves as an interactive presentation of the PCP Plugin API. **
+### This repository builds an interactive guide leveraging an Alpine Linux container running Jupyter Notebook. It's purpose is to support the Plugin developer in building a PCP compliant Plugin. Aside from guiding the Plugin developer, a Plugin template (using Jupyter Notebook) will autoload on connection with the container, serving as an interactive presentation of the PCP Plugin API. The latest template will also be saved separately in this repository. As plugins are developed, they can also be maintained in the repository, or kept offline as standalone Jupyter Notebook files.
 
-** First, re-save this Plugin template (this Jupyter notebook) as [pluginName].ipynb, by selecting FILE-->RENAME from the top menu above. You'll also want to save frequently, with FILE-->SAVE AS CHECKPOINT, as well as using the DOWNLOAD AS .pynb, which will allow you to archive your plugin development progress in the event your system is restarted. While it is also possible to map your host machine folder to the container folder, allowing access to your Plugin notebook file, it is preferable to deliberately save and track the progress of your work using features within this Jupyter notebook application**
+### Download the docker image that will support interactive plugin development, with:
+* docker pull ramrodpcp/devguide-api
 
-** The following steps will guide the plugin developer through the PCP API and required steps to build a PCP compliant plugin. It does this using the interactive nature of Jupyter notebook, as well as a background helper script (python-builder.py) which converts the [pluginName].ipynb to an importable python module which will complete creation of the plugin and add it to the list of plugins found by the PCP application. **
+### Start the Jupyter Notebook server with:
+* docker run -p 443:443 -v /home/linpy:/home/linpy -v /run/docker.sock:/run/docker.sock ramrodpcp/devguide-api
+
+### Find the line on your host terminal that identifies the IP address and secure access token to be used to access the plugin template and Jupyter Notebook. Replace "localhost" with the IP address that is running the docker container, if accessing the notebook from another machine on the host's network.
+
