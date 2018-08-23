@@ -9,5 +9,5 @@
 ### Start the Jupyter notebook server with:
 * docker run -p 443:443 -v `<host-user-folder>`:/home/linpy -v /run/docker.sock:/run/docker.sock ramrodpcp/devguide-api
 
-### Find the line on your host terminal that identifies the IP address and secure access token to be used to access the plugin template and Jupyter notebook.  Replace "localhost" with the IP address that is running the docker container, if accessing the notebook from another machine on the host's network.
+### Find the line on your host terminal that identifies the Internet Protocol (IP) address and secure access token to be used to access the plugin template and Jupyter notebook.  Replace "localhost" with the IP address that is running the docker container, if accessing the notebook from another machine on the host's network.
 
