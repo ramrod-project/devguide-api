@@ -1,0 +1,32 @@
+sudo: required
+
+language: python
+
+python:
+  - "3.6"
+
+services:
+  - docker
+
+branches:
+  only:
+  - master
+  - dev
+  - qa
+
+before_install:
+  - if [ "$TRAVIS_BRANCH" == "master"  ]; 
+    then export TAG=latest; 
+    else export TAG=$TRAVIS_BRANCH; fi
+
+script:
+  - docker build -t ramrodpcp/devguide-api:$TAG .
+
+after_success:
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" ]];
+    then echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; fi
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false"  ]];
+    then docker push ramrodpcp/devguide-api:$TAG; fi
+
+notifications:
+  slack: ramrod-project:GDF82rRYDg3KSekrT3GA24qO
